@@ -1,20 +1,18 @@
 import os
 import csv
-import json
 from datetime import datetime
 from googleapiclient.discovery import build
 
 # ─── Configuració ─────────────────────────────────────────────────────────────
 YOUTUBE_API_KEY = os.environ["YOUTUBE_API_KEY"]
 HASHTAGS        = ["català", "creadorscatalans", "contingutencatala", "mantincelcatala"]
-MAX_CANALS      = 20        # canals nous a analitzar per execució
-POSTS_ANALITZAR = 5         # posts per canal
-LLINDAR_CATALA  = 0.70      # 70% mínim
+MAX_CANALS      = 20
+POSTS_ANALITZAR = 5
+LLINDAR_CATALA  = 0.70
 
 FITXER_LLISTA   = "dades/llista_creadors.csv"
 FITXER_SUGGERIM = "dades/suggeriments.csv"
 
-# Paraules que indiquen clarament contingut en català
 PARAULES_CATALA = [
     "en català", "en catala", "català", "catala", "valenciana", "valencians",
     "mallorquí", "mallorqui", "llengua catalana", "parlant català", "parlem català",
@@ -54,7 +52,6 @@ def detectar_idioma(text):
 # ─── Analitzar els posts d'un canal ───────────────────────────────────────────
 def analitzar_canal(youtube, channel_id, channel_title):
     try:
-        # Obtenir els últims POSTS_ANALITZAR vídeos
         res = youtube.search().list(
             part="id,snippet",
             channelId=channel_id,
@@ -67,16 +64,14 @@ def analitzar_canal(youtube, channel_id, channel_title):
         if not videos:
             return None
 
-        # Comprovar el 1r post
         primer = videos[0]["snippet"]
         text_primer = f"{primer.get('title','')} {primer.get('description','')}"
         idioma_primer = detectar_idioma(text_primer)
 
         if idioma_primer == "castellà":
-            print(f"  ✗ {channel_title}: 1r post en castellà → descarta")
+            print(f"  x {channel_title}: 1r post en castella -> descarta")
             return None
 
-        # Analitzar la resta de posts
         en_catala = 1 if idioma_primer == "català" else 0
         for video in videos[1:]:
             snippet = video["snippet"]
@@ -87,13 +82,13 @@ def analitzar_canal(youtube, channel_id, channel_title):
         percentatge = en_catala / len(videos)
         compleix = percentatge >= LLINDAR_CATALA
 
-        print(f"  {'✓' if compleix else '✗'} {channel_title}: {en_catala}/{len(videos)} en català ({int(percentatge*100)}%) → {'PASSA' if compleix else 'no passa'}")
+        print(f"  {'OK' if compleix else 'x'} {channel_title}: {en_catala}/{len(videos)} en catala ({int(percentatge*100)}%) -> {'PASSA' if compleix else 'no passa'}")
 
         if compleix:
             return {
-                "Nom":            channel_title,
-                "Plataforma":     "YouTube",
-                "URL":            f"https://youtube.com/channel/{channel_id}",
+                "Nom":              channel_title,
+                "Plataforma":       "YouTube",
+                "URL":              f"https://youtube.com/channel/{channel_id}",
                 "Posts analitzats": len(videos),
                 "Posts en català":  en_catala,
                 "% Català":         f"{int(percentatge*100)}%",
@@ -106,7 +101,7 @@ def analitzar_canal(youtube, channel_id, channel_title):
 
 # ─── Cerca per hashtag ─────────────────────────────────────────────────────────
 def cercar_canals(youtube, hashtag, llista_existent, analitzats):
-    print(f"\n🔍 Cercant #{hashtag}...")
+    print(f"\nCercant #{hashtag}...")
     try:
         res = youtube.search().list(
             part="id,snippet",
@@ -126,12 +121,10 @@ def cercar_canals(youtube, hashtag, llista_existent, analitzats):
             channel_title = item["snippet"]["channelTitle"].strip()
             channel_url   = f"https://youtube.com/channel/{channel_id}"
 
-            # Ja el tenim a Llista?
             if channel_url.lower() in llista_existent or channel_title.lower() in llista_existent:
-                print(f"  → {channel_title}: ja existeix a Llista")
+                print(f"  -> {channel_title}: ja existeix a Llista")
                 continue
 
-            # Ja l'hem analitzat en aquesta execució?
             if channel_id in analitzats:
                 continue
 
@@ -154,14 +147,14 @@ def guardar_suggeriments(nous):
         with open(FITXER_SUGGERIM, newline="", encoding="utf-8") as f:
             existents = list(csv.DictReader(f))
 
-    urls_existents = {r.get("URL","").lower() for r in existents}
+    urls_existents = {r.get("URL", "").lower() for r in existents}
     realment_nous  = [s for s in nous if s["URL"].lower() not in urls_existents]
 
     if not realment_nous:
         print("\nCap suggeriment nou per afegir.")
         return 0
 
-    tots = existents + realment_nous
+    tots  = existents + realment_nous
     camps = ["Nom", "Plataforma", "URL", "Posts analitzats", "Posts en català", "% Català", "Data detecció", "Estat"]
 
     with open(FITXER_SUGGERIM, "w", newline="", encoding="utf-8") as f:
@@ -169,16 +162,16 @@ def guardar_suggeriments(nous):
         writer.writeheader()
         writer.writerows(tots)
 
-    print(f"\n✅ {len(realment_nous)} nou(s) suggeriment(s) afegit(s) al fitxer.")
+    print(f"\n{len(realment_nous)} nou(s) suggeriment(s) afegit(s) al fitxer.")
     return len(realment_nous)
 
 # ─── Principal ─────────────────────────────────────────────────────────────────
 def main():
     print(f"{'─'*50}")
-    print(f"Recerca de creadors — {datetime.today().strftime('%d/%m/%Y %H:%M')}")
+    print(f"Recerca de creadors - {datetime.today().strftime('%d/%m/%Y %H:%M')}")
     print(f"{'─'*50}")
 
-    youtube = build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
+    youtube         = build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
     llista_existent = carregar_llista()
     print(f"Llista actual: {len(llista_existent)} entrades carregades")
 

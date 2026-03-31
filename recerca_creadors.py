@@ -178,7 +178,7 @@ def main():
     print(f"Recerca de creadors — {datetime.today().strftime('%d/%m/%Y %H:%M')}")
     print(f"{'─'*50}")
 
-    youtube         = build("googleapiclient.discovery", "v3", developerKey=YOUTUBE_API_KEY)
+    youtube = build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
     llista_existent = carregar_llista()
     print(f"Llista actual: {len(llista_existent)} entrades carregades")
 

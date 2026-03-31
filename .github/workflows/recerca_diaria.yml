@@ -1,0 +1,33 @@
+name: Recerca diària de creadors
+
+on:
+  schedule:
+    - cron: "0 2 * * *"   # cada nit a les 02:00 UTC
+  workflow_dispatch:        # permet llançar-lo manualment des de GitHub
+
+jobs:
+  cercar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descarregar repositori
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instal·lar dependències
+        run: pip install google-api-python-client
+
+      - name: Executar script de recerca
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python recerca_creadors.py
+
+      - name: Pujar fitxer de suggeriments actualitzat
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Suggeriments actualitzats - ${{ github.run_id }}"
+          file_pattern: dades/suggeriments.csv

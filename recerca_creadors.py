@@ -93,7 +93,9 @@ def analitzar_canal(youtube, channel_id, channel_title):
                 "Posts en català":  en_catala,
                 "% Català":         f"{int(percentatge*100)}%",
                 "Data detecció":    datetime.today().strftime("%d/%m/%Y"),
-                "Estat":            "Suggeriment pendent"
+                "Estat":            "Suggeriment pendent",
+                "Decisió":          "",
+                "Data decisió":     ""
             }
     except Exception as e:
         print(f"  Error analitzant {channel_title}: {e}")
@@ -143,9 +145,17 @@ def guardar_suggeriments(nous):
     os.makedirs("dades", exist_ok=True)
     existents = []
 
+    # Columnes completes — inclou Decisió i Data decisió
+    camps = ["Nom", "Plataforma", "URL", "Posts analitzats", "Posts en català",
+             "% Català", "Data detecció", "Estat", "Decisió", "Data decisió"]
+
     if os.path.exists(FITXER_SUGGERIM):
         with open(FITXER_SUGGERIM, newline="", encoding="utf-8") as f:
-            existents = list(csv.DictReader(f))
+            reader = csv.DictReader(f)
+            for row in reader:
+                # Assegurem que cada fila té totes les columnes
+                fila = {c: row.get(c, "") for c in camps}
+                existents.append(fila)
 
     urls_existents = {r.get("URL", "").lower() for r in existents}
     realment_nous  = [s for s in nous if s["URL"].lower() not in urls_existents]
@@ -154,11 +164,10 @@ def guardar_suggeriments(nous):
         print("\nCap suggeriment nou per afegir.")
         return 0
 
-    tots  = existents + realment_nous
-    camps = ["Nom", "Plataforma", "URL", "Posts analitzats", "Posts en català", "% Català", "Data detecció", "Estat"]
+    tots = existents + realment_nous
 
     with open(FITXER_SUGGERIM, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=camps)
+        writer = csv.DictWriter(f, fieldnames=camps, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(tots)
 

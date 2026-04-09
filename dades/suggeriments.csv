@@ -1,19 +1,21 @@
-Nom,Plataforma,URL,Posts analitzats,Posts en catalÃ,% CatalÃ,Data detecciÃ³,Estat,DecisiÃ³,Data decisiÃ³,Decisió,Data decisió
-"Oscar Brick","YouTube","https://youtube.com/channel/UCbPgVFUOpgw25QRfTt8ZXVQ","5","5","100%","31/03/2026","Suggeriment pendent","","","Descartar","2026-04-07"
-"OliviaMent - MeditaciÃ³ en CatalÃ","YouTube","https://youtube.com/channel/UCVC3vb6GMUP3nR_xsv12Z9g","5","5","100%","31/03/2026","Suggeriment pendent","","","",""
-"Nou So CatalÃ","YouTube","https://youtube.com/channel/UCLdeuGNnRyytkoB5qgbNJZg","5","5","100%","31/03/2026","Suggeriment pendent","","","",""
-"FrikiiCat en CatalÃ","YouTube","https://youtube.com/channel/UCQ3o-djSdAqdjYyg0ld0x6Q","5","4","80%","31/03/2026","Suggeriment pendent","","","Incorporar","2026-04-07"
-"Servei de PolÃ­tica LingÃ¼Ã­stica d'Andorra","YouTube","https://youtube.com/channel/UCtBPso0ffw1uEVI2FN5qJNQ","5","5","100%","31/03/2026","Suggeriment pendent","","","",""
-"ErialAnime","YouTube","https://youtube.com/channel/UCCDMm5ZB-CfrP_X1Q9quOlA","2","2","100%","01/04/2026","Suggeriment pendent","","","",""
-"AntÃ³nio Numbo","YouTube","https://youtube.com/channel/UCmA_NIZiPzycsh27Sqx8r2g","1","1","100%","01/04/2026","Suggeriment pendent","","","",""
-"Queri","YouTube","https://youtube.com/channel/UCETFELIxquYqCrdSRRr3pfg","5","4","80%","01/04/2026","Suggeriment pendent","","","",""
-"SmaugKing","YouTube","https://youtube.com/channel/UCmDQBosgkWRevcO4uk7WjDA","5","4","80%","01/04/2026","Suggeriment pendent","","","",""
-"amazigament","YouTube","https://youtube.com/channel/UC1zdhAkXhr8lT7U7T3oDDEA","5","5","100%","01/04/2026","Suggeriment pendent","","","",""
-"SimValenciana MEDIATECA","YouTube","https://youtube.com/channel/UCYCRrW0XAoxaoU_FTOV-ytA","25","18","72%","01/04/2026","Suggeriment pendent","","","",""
-"Maria Hepburn","YouTube","https://youtube.com/channel/UC-9s59EqCY0eBky8uOneOtA","5","4","80%","02/04/2026","Suggeriment pendent","","","",""
-"Samire","YouTube","https://youtube.com/channel/UC5FQ-Lr7Hfx1eW3n8paV_NQ","5","5","100%","04/04/2026","Suggeriment pendent","","","",""
-"Nitsai","YouTube","https://youtube.com/channel/UCHIjJCu8AD3kh3mHWPvOq9g","5","5","100%","04/04/2026","Suggeriment pendent","","","",""
-"Rimbowling","YouTube","https://youtube.com/channel/UCa0zimohVMhIXt5QrJJBxiA","5","4","80%","04/04/2026","Suggeriment pendent","","","",""
-"Jordi SabatÃ©","YouTube","https://youtube.com/channel/UCqjBBs9nifFiNgyH8y9AUog","5","5","100%","04/04/2026","Suggeriment pendent","","","",""
-"PepElMicoASMR","YouTube","https://youtube.com/channel/UC8eu9P0L7yVfTLeAjlAI-Bw","5","5","100%","06/04/2026","Suggeriment pendent","","","",""
-"emergencias 06","YouTube","https://youtube.com/channel/UC-RlDHT2CqMpIqlgYtJEp-Q","1","1","100%","06/04/2026","Suggeriment pendent","","","",""
+Nom,Plataforma,URL,Posts analitzats,Posts en català,% Català,Data detecció,Estat,Decisió,Data decisió
+Oscar Brick,YouTube,https://youtube.com/channel/UCbPgVFUOpgw25QRfTt8ZXVQ,5,,,,Suggeriment pendent,Descartar,2026-04-07
+OliviaMent - MeditaciÃ³ en CatalÃ,YouTube,https://youtube.com/channel/UCVC3vb6GMUP3nR_xsv12Z9g,5,,,,Suggeriment pendent,,
+Nou So CatalÃ,YouTube,https://youtube.com/channel/UCLdeuGNnRyytkoB5qgbNJZg,5,,,,Suggeriment pendent,,
+FrikiiCat en CatalÃ,YouTube,https://youtube.com/channel/UCQ3o-djSdAqdjYyg0ld0x6Q,5,,,,Suggeriment pendent,Incorporar,2026-04-07
+Servei de PolÃ­tica LingÃ¼Ã­stica d'Andorra,YouTube,https://youtube.com/channel/UCtBPso0ffw1uEVI2FN5qJNQ,5,,,,Suggeriment pendent,,
+ErialAnime,YouTube,https://youtube.com/channel/UCCDMm5ZB-CfrP_X1Q9quOlA,2,,,,Suggeriment pendent,,
+AntÃ³nio Numbo,YouTube,https://youtube.com/channel/UCmA_NIZiPzycsh27Sqx8r2g,1,,,,Suggeriment pendent,,
+Queri,YouTube,https://youtube.com/channel/UCETFELIxquYqCrdSRRr3pfg,5,,,,Suggeriment pendent,,
+SmaugKing,YouTube,https://youtube.com/channel/UCmDQBosgkWRevcO4uk7WjDA,5,,,,Suggeriment pendent,,
+amazigament,YouTube,https://youtube.com/channel/UC1zdhAkXhr8lT7U7T3oDDEA,5,,,,Suggeriment pendent,,
+SimValenciana MEDIATECA,YouTube,https://youtube.com/channel/UCYCRrW0XAoxaoU_FTOV-ytA,25,,,,Suggeriment pendent,,
+Maria Hepburn,YouTube,https://youtube.com/channel/UC-9s59EqCY0eBky8uOneOtA,5,,,,Suggeriment pendent,,
+Samire,YouTube,https://youtube.com/channel/UC5FQ-Lr7Hfx1eW3n8paV_NQ,5,,,,Suggeriment pendent,,
+Nitsai,YouTube,https://youtube.com/channel/UCHIjJCu8AD3kh3mHWPvOq9g,5,,,,Suggeriment pendent,,
+Rimbowling,YouTube,https://youtube.com/channel/UCa0zimohVMhIXt5QrJJBxiA,5,,,,Suggeriment pendent,,
+Jordi SabatÃ©,YouTube,https://youtube.com/channel/UCqjBBs9nifFiNgyH8y9AUog,5,,,,Suggeriment pendent,,
+PepElMicoASMR,YouTube,https://youtube.com/channel/UC8eu9P0L7yVfTLeAjlAI-Bw,5,,,,Suggeriment pendent,,
+emergencias 06,YouTube,https://youtube.com/channel/UC-RlDHT2CqMpIqlgYtJEp-Q,1,,,,Suggeriment pendent,,
+zou,YouTube,https://youtube.com/channel/UCBuRzigXvByfT4aluJ0gKgA,2,2,100%,09/04/2026,Suggeriment pendent,,
+ᴀʟᴇx ʟᴏᴘᴇᴢ,YouTube,https://youtube.com/channel/UCujd2LAgrzX0xtXMejRwGUQ,5,4,80%,09/04/2026,Suggeriment pendent,,
